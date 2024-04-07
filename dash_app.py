@@ -25,11 +25,12 @@ app.layout = html.Div(
                     "margin": "10px",
                 },
             ),
-            id="file-upload"
+            id="file-upload",
         ),
-        dcc.Download(id="file-download")
+        dcc.Download(id="file-download"),
     ]
 )
+
 
 @callback(
     Output("file-download", "data"),
@@ -39,20 +40,18 @@ app.layout = html.Div(
 )
 def upload_and_download_file(file_name, file_contents):
     if file_contents is not None:
-        content_type, content_string = file_contents.split(',')
+        _, content_string = file_contents.split(",")
         decoded_content = base64.b64decode(content_string)
-        
+
         df = pd.read_excel(io.BytesIO(decoded_content))
         cleaned_df = clean_dataframe(df, file_name)
 
         output_file_name = f"cleaned_{file_name}"
         cleaned_df.to_excel(output_file_name, index=False)
 
-        return dcc.send_file(
-            output_file_name
-        )
+        return dcc.send_file(output_file_name)
     return None
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True, host='0.0.0.0')
+    app.run_server(debug=True, host="0.0.0.0")

@@ -1,6 +1,7 @@
 import pandas as pd
 import argparse
 
+
 def clean_dataframe(df: pd.DataFrame, file_name):
     # filter out "?" availabilities
     filtered_df = df[
@@ -12,7 +13,6 @@ def clean_dataframe(df: pd.DataFrame, file_name):
         )
     ].rename(columns={"Unnamed: 0": "name"})
 
-    # filtered_df.to_excel(f"cleaner_{file_name}", index=False)
     return filtered_df
 
 
@@ -26,4 +26,5 @@ if __name__ == "__main__":
     config = vars(args)
 
     df = pd.read_excel(f"{config[file_name]}.xlsx")
-    clean_dataframe(df, config[file_name])
+    filtered_df = clean_dataframe(df, config[file_name])
+    filtered_df.to_excel(f"cleaner_{file_name}", index=False)
