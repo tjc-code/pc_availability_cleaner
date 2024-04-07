@@ -6,4 +6,5 @@ services:
     name: dash-app
     runtime: python
     repo: https://github.com/tjc-code/pc_availability_cleaner.git
+    buildCommand: pip install -r requirements.txt
     startCommand: "python dash_app.py"

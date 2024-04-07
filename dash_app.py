@@ -3,7 +3,6 @@ from cleaner import clean_dataframe
 import io
 import pandas as pd
 import base64
-from flask import send_file
 
 app = Dash(__name__)
 
