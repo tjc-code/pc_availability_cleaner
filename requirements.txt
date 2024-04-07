@@ -3,4 +3,3 @@ dash
 pandas
 argparse
 openpyxl
-base64
