@@ -1,0 +1,10 @@
+# This is a basic example Blueprint for a Django web service and
+# the PostgreSQL database it connects to.
+services:
+  - type: web # A Python web service named django-app running on a free instance
+    plan: free
+    name: dash-app
+    runtime: python
+    repo: https://github.com/tjc-code/pc_availability_cleaner.git
+    buildCommand: "./build.sh"
+    startCommand: "python dash_app.py"
