@@ -8,6 +8,7 @@ E.g. to run on the "test_players.xlsx" file:
 
 ```
 ./clean.sh test_players
+```
 
 
 # Dash app
